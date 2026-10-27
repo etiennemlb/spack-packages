@@ -12,8 +12,8 @@ class Koliop(CMakePackage):
     function due to collisions."""
 
     homepage = "https://gitlab.com/cines/code.gysela/libkoliop"
-    git = "https://gitlab.com/cines/code.gysela/libkoliop.git"
-    url = "https://gitlab.com/cines/code.gysela/libkoliop/-/archive/v0.1.0/libkoliop-v0.1.0.tar.gz"
+    git = "https://github.com/gyselax/gysela-collisions.git"
+    url = "https://github.com/gyselax/gysela-collisions/archive/refs/tags/v1.0.0.tar.gz"
 
     maintainers("etiennemlb", "tpadioleau")
 
@@ -31,15 +31,11 @@ class Koliop(CMakePackage):
     depends_on("cxx", type="build")
     depends_on("cmake@3.25:4", type="build")
 
-    depends_on("kokkos@4.1:")
-    depends_on("kokkos@:5")
-    depends_on("kokkos@:4", when="@:0.1")
-    depends_on("kokkos@5.2.2:", when="@:1.0.0")
+    depends_on("kokkos@4.1:4", when="@:0.1")
+    depends_on("kokkos@5:", when="@1.0.0:")
 
-    depends_on("kokkos-kernels@4.1:")
-    depends_on("kokkos-kernels@:5")
-    depends_on("kokkos-kernels@:4", when="@:0.1")
-    depends_on("kokkos-kernels@5.2.2:", when="@:1.0.0")
+    depends_on("kokkos-kernels@4.1:4", when="@:0.1")
+    depends_on("kokkos-kernels@5:", when="@1.0.0:")
 
     def cmake_args(self):
         args = [
