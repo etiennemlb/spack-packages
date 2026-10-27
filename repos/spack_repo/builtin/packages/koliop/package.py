@@ -11,7 +11,7 @@ class Koliop(CMakePackage):
     """A KOkkos based colLIsion OPerator (KoLiOp) that computes the evolution of the distribution
     function due to collisions."""
 
-    homepage = "https://gitlab.com/cines/code.gysela/libkoliop"
+    homepage = "https://github.com/gyselax/gysela-collisions"
     git = "https://github.com/gyselax/gysela-collisions.git"
     url = "https://github.com/gyselax/gysela-collisions/archive/refs/tags/v1.0.0.tar.gz"
 
