@@ -31,13 +31,13 @@ class Koliop(CMakePackage):
     depends_on("cxx", type="build")
     depends_on("cmake@3.25:4", type="build")
 
-    depends_on("kokkos@4.1:4", when="@:0.1")
     depends_on("kokkos@4.1:")
     depends_on("kokkos@:5")
+    depends_on("kokkos@4.1:4", when="@:0.1")
 
-    depends_on("kokkos-kernels@4.1:4", when="@:0.1")
     depends_on("kokkos-kernels@4.1:")
     depends_on("kokkos-kernels@:5")
+    depends_on("kokkos-kernels@4.1:4", when="@:0.1")
 
     def cmake_args(self):
         args = [
