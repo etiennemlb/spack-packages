@@ -20,6 +20,7 @@ class Koliop(CMakePackage):
     license("MIT", checked_by="tpadioleau")
 
     version("master", branch="master", no_cache=True)
+    version("1.0.0", sha256="be6ee0169d86ed0ec148a5278592f10983e37b2b")
     version("0.2.1", sha256="e47df0a03556be57a409b602a902b0b0df24d7edbf270270bdda1e7b49f55740")
     version("0.2.0", sha256="142733a74ff826d9afb5959f92550989bfbe08f6eba19ba893ccc069074235df")
     version("0.1.3", sha256="3c01ca0c4475bfceb2269713fc61c6bb328b1c2f7c8c262a6bdafc89d681244a")
@@ -33,25 +34,28 @@ class Koliop(CMakePackage):
     depends_on("kokkos@4.1:")
     depends_on("kokkos@:5")
     depends_on("kokkos@:4", when="@:0.1")
+    depends_on("kokkos@5.2.2:", when="@:1.0.0")
 
     depends_on("kokkos-kernels@4.1:")
     depends_on("kokkos-kernels@:5")
     depends_on("kokkos-kernels@:4", when="@:0.1")
+    depends_on("kokkos-kernels@5.2.2:", when="@:1.0.0")
 
     def cmake_args(self):
         args = [
             self.define("koliop_ASSERT_ENABLED", True),
-            self.define("koliop_ASSUME_INPUT_BUFFERS_ARE_DEVICE_COMPATIBLE", True),
-            self.define("koliop_BUILD_FORTRAN_INTERFACE", False),
             self.define("koliop_BUILD_TESTING", self.run_tests),
             self.define("koliop_CONSTANT_MEMORY_USAGE", False),
             self.define("koliop_ENABLE_Kokkos", "SYSTEM"),
             self.define("koliop_ENABLE_KokkosKernels", "SYSTEM"),
             self.define("koliop_ENABLE_LTO", False),
-            self.define("koliop_FENCE_ON_OPERATOR_EXIT", False),
             self.define("koliop_RUN_DEMONSTRATION_AS_TEST", False),
             self.define("koliop_UTILITY_FLATTEN_EXPECT_POW2_EXTENTS", False),
         ]
+        if self.spec.satisfies("@:1.0.0"):
+            args.append(self.define("koliop_ASSUME_INPUT_BUFFERS_ARE_DEVICE_COMPATIBLE", True))
+            args.append(self.define("koliop_BUILD_FORTRAN_INTERFACE", False))
+            args.append(self.define("koliop_FENCE_ON_OPERATOR_EXIT", False))
 
         if self.spec.satisfies("^kokkos+rocm"):
             args.append(self.define("CMAKE_CXX_COMPILER", self.spec["hip"].hipcc))
@@ -59,3 +63,4 @@ class Koliop(CMakePackage):
             args.append(self.define("CMAKE_CXX_COMPILER", self["kokkos"].kokkos_cxx))
 
         return args
+
