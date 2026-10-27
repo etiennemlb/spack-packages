@@ -20,7 +20,7 @@ class Koliop(CMakePackage):
     license("MIT", checked_by="tpadioleau")
 
     version("master", branch="master", no_cache=True)
-    version("1.0.0", sha256="be6ee0169d86ed0ec148a5278592f10983e37b2b")
+    version("1.0.0", sha256="e9d2a18b69c9c023fa6d0bbfd6bab3d2600a3d5ef5349ade947a483ae3dfd764")
     version("0.2.1", sha256="e47df0a03556be57a409b602a902b0b0df24d7edbf270270bdda1e7b49f55740")
     version("0.2.0", sha256="142733a74ff826d9afb5959f92550989bfbe08f6eba19ba893ccc069074235df")
     version("0.1.3", sha256="3c01ca0c4475bfceb2269713fc61c6bb328b1c2f7c8c262a6bdafc89d681244a")
@@ -48,7 +48,7 @@ class Koliop(CMakePackage):
             self.define("koliop_RUN_DEMONSTRATION_AS_TEST", False),
             self.define("koliop_UTILITY_FLATTEN_EXPECT_POW2_EXTENTS", False),
         ]
-        if self.spec.satisfies("@:1.0.0"):
+        if self.spec.satisfies("@0"):
             args.append(self.define("koliop_ASSUME_INPUT_BUFFERS_ARE_DEVICE_COMPATIBLE", True))
             args.append(self.define("koliop_BUILD_FORTRAN_INTERFACE", False))
             args.append(self.define("koliop_FENCE_ON_OPERATOR_EXIT", False))
