@@ -63,4 +63,3 @@ class Koliop(CMakePackage):
             args.append(self.define("CMAKE_CXX_COMPILER", self["kokkos"].kokkos_cxx))
 
         return args
-
