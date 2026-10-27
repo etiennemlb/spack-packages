@@ -21,19 +21,21 @@ class Koliop(CMakePackage):
 
     version("master", branch="master", no_cache=True)
     version("1.0.0", sha256="e9d2a18b69c9c023fa6d0bbfd6bab3d2600a3d5ef5349ade947a483ae3dfd764")
-    version("0.2.1", sha256="e47df0a03556be57a409b602a902b0b0df24d7edbf270270bdda1e7b49f55740")
-    version("0.2.0", sha256="142733a74ff826d9afb5959f92550989bfbe08f6eba19ba893ccc069074235df")
-    version("0.1.3", sha256="3c01ca0c4475bfceb2269713fc61c6bb328b1c2f7c8c262a6bdafc89d681244a")
-    version("0.1.2", sha256="7581e8313b7ebc09b291ac486d7f6d03b55d7e0ce2e8ebf62863177bbb080fd1")
-    version("0.1.1", sha256="abf5a7187067a452a6a5e45dcd6502ef077f77a591839adf8d21ed4e8b9987f7")
-    version("0.1.0", sha256="511df587fba11c16e728d1ccdc68c9004dcb0cc87c548e955599d69bf68e6642")
+    version("0.2.1", sha256="18d6efc146704f47057e6ce4175ef1aa930605c5ffb778885cafe3f1cd5083fd")
+    version("0.2.0", sha256="9217d52d153e4d4a309fc1635f573c56f5fd44a99f58a1afbf6fe603c503104f")
+    version("0.1.3", sha256="873045019db6fef4f91e5824de2ae1bb93823583ebe54c7637589575f46fd964")
+    version("0.1.2", sha256="35c203e574d3615803947d84ee908990dd5839e85cb6796045e849ee52a4977f")
+    version("0.1.1", sha256="5c039043d77d67addb9a295ef3fd4bdea83f250630a0a6e2d48d773c523301f9")
+    version("0.1.0", sha256="564cf5acc3c2411b8c50cf1429d942541ef9ac53ebf1c4005330a2338db6b3db")
 
     depends_on("cxx", type="build")
     depends_on("cmake@3.25:4", type="build")
 
+    depends_on("kokkos@4.1:")
     depends_on("kokkos@4.1:4", when="@:0.1")
     depends_on("kokkos@:5")
 
+    depends_on("kokkos-kernels@4.1:")
     depends_on("kokkos-kernels@4.1:4", when="@:0.1")
     depends_on("kokkos-kernels@:5")
 
